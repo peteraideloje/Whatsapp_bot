@@ -1,0 +1,65 @@
+{
+  "name": "whatsapp-business-bot",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "description": "Complete WhatsApp Business API bot with admin dashboard",
+  "keywords": ["whatsapp", "bot", "business", "api", "automation"],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "server": "node server/index.js",
+    "start": "concurrently \"npm run server\" \"npm run dev\"",
+    "setup-wizard": "node scripts/setup-wizard.js",
+    "setup-whatsapp": "node scripts/setup-whatsapp.js",
+    "test-webhook": "curl -X GET http://localhost:3001/api/whatsapp/webhook",
+    "validate-config": "node scripts/setup-whatsapp.js",
+    "health-check": "node scripts/health-check.js",
+    "health-monitor": "node scripts/health-check.js monitor",
+    "deploy": "node scripts/deploy-helper.js",
+    "generate-env": "node scripts/generate-env.js",
+    "backup-db": "cp bot_data.db \"backups/bot_data_$(date +%Y%m%d_%H%M%S).db\"",
+    "restore-db": "cp backups/bot_data_*.db bot_data.db",
+    "clean-logs": "rm -rf logs/*.log",
+    "production": "NODE_ENV=production npm run server",
+    "docker:build": "docker build -t whatsapp-business-bot .",
+    "docker:run": "docker-compose up -d",
+    "docker:stop": "docker-compose down",
+    "pm2:start": "pm2 start ecosystem.config.js --env production",
+    "pm2:stop": "pm2 stop whatsapp-business-bot",
+    "pm2:restart": "pm2 restart whatsapp-business-bot",
+    "pm2:logs": "pm2 logs whatsapp-business-bot"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "bcryptjs": "^2.4.3",
+    "chalk": "^5.4.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "node-cron": "^3.0.3",
+    "nodemailer": "^6.9.7",
+    "sqlite3": "^5.1.6",
+    "twilio": "^4.19.0",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "vite": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/whatsapp-business-bot.git"
+  },
+  "author": "Your Name <your.email@example.com>",
+  "license": "MIT"
+}

@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BusinessBot Admin Dashboard</title>
+    <link rel="stylesheet" href="/admin.css">
+  </head>
+  <body>
+    <div id="admin-app">
+      <!-- Header -->
+      <header class="admin-header">
+        <div class="admin-nav">
+          <div class="admin-logo">
+            <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.893 3.386"/>
+            </svg>
+            <span>BusinessBot Admin</span>
+          </div>
+          <nav class="admin-nav-links">
+            <button class="nav-btn active" data-tab="dashboard">Dashboard</button>
+            <button class="nav-btn" data-tab="faqs">FAQs</button>
+            <button class="nav-btn" data-tab="conversations">Conversations</button>
+            <button class="nav-btn" data-tab="analytics">Analytics</button>
+            <button class="nav-btn" data-tab="broadcasts">Broadcasts</button>
+            <button class="nav-btn" data-tab="settings">Settings</button>
+          </nav>
+          <div class="admin-actions">
+            <button class="btn-secondary" onclick="window.open('/', '_blank')">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+              </svg>
+              View Site
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="admin-main">
+        <!-- Dashboard Tab -->
+        <div id="dashboard-tab" class="tab-content active">
+          <div class="dashboard-header">
+            <h1>Dashboard Overview</h1>
+            <p>Monitor your bot's performance and key metrics</p>
+          </div>
+          
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                </svg>
+              </div>
+              <div class="stat-content">
+                <div class="stat-number" id="total-conversations">0</div>
+                <div class="stat-label">Total Conversations</div>
+              </div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/>
+                </svg>
+              </div>
+              <div class="stat-content">
+                <div class="stat-number" id="total-messages">0</div>
+                <div class="stat-label">Total Messages</div>
+              </div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+              </div>
+              <div class="stat-content">
+                <div class="stat-number" id="escalation-rate">0%</div>
+                <div class="stat-label">Escalation Rate</div>
+              </div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </div>
+              <div class="stat-content">
+                <div class="stat-number" id="avg-satisfaction">0.0</div>
+                <div class="stat-label">Avg Satisfaction</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-charts">
+            <div class="chart-card">
+              <h3>Recent Activity</h3>
+              <div class="chart-placeholder">
+                <p>Activity chart will be displayed here</p>
+              </div>
+            </div>
+            
+            <div class="chart-card">
+              <h3>Top FAQ Categories</h3>
+              <div id="categories-chart" class="categories-list">
+                <!-- Categories will be populated here -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQs Tab -->
+        <div id="faqs-tab" class="tab-content">
+          <div class="tab-header">
+            <h1>FAQ Management</h1>
+            <button class="btn-primary" id="add-faq-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+              </svg>
+              Add New FAQ
+            </button>
+          </div>
+          
+          <div class="faqs-container">
+            <div class="faqs-list" id="faqs-list">
+              <!-- FAQs will be populated here -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Conversations Tab -->
+        <div id="conversations-tab" class="tab-content">
+          <div class="tab-header">
+            <h1>Conversation History</h1>
+            <div class="filters">
+              <input type="text" placeholder="Search conversations..." id="conversation-search">
+              <select id="conversation-filter">
+                <option value="">All Sessions</option>
+                <option value="whatsapp">WhatsApp</option>
+                <option value="web">Web Chat</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="conversations-container">
+            <div class="conversations-list" id="conversations-list">
+              <!-- Conversations will be populated here -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Analytics Tab -->
+        <div id="analytics-tab" class="tab-content">
+          <div class="tab-header">
+            <h1>Analytics & Reports</h1>
+            <div class="date-filters">
+              <select id="analytics-period">
+                <option value="7">Last 7 days</option>
+                <option value="30">Last 30 days</option>
+                <option value="90">Last 90 days</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="analytics-content">
+            <div class="analytics-grid">
+              <div class="analytics-card">
+                <h3>Bot Performance</h3>
+                <div class="performance-metrics">
+                  <div class="metric">
+                    <span class="metric-label">Resolution Rate</span>
+                    <span class="metric-value" id="resolution-rate">85%</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Avg Response Time</span>
+                    <span class="metric-value" id="response-time">1.2s</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="analytics-card">
+                <h3>User Satisfaction</h3>
+                <div class="satisfaction-chart">
+                  <div class="satisfaction-score">
+                    <span class="score-number" id="satisfaction-score">4.2</span>
+                    <span class="score-label">out of 5</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Broadcasts Tab -->
+        <div id="broadcasts-tab" class="tab-content">
+          <div class="tab-header">
+            <h1>Broadcast Messages</h1>
+            <button class="btn-primary" id="create-broadcast-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+              </svg>
+              Create Broadcast
+            </button>
+          </div>
+          
+          <div class="broadcasts-container">
+            <div class="broadcasts-list" id="broadcasts-list">
+              <!-- Broadcasts will be populated here -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Settings Tab -->
+        <div id="settings-tab" class="tab-content">
+          <div class="tab-header">
+            <h1>Settings</h1>
+            <p>Configure your bot and system settings</p>
+          </div>
+          
+          <div class="settings-content">
+            <div class="settings-grid">
+              <div class="settings-card">
+                <h3>API Configuration</h3>
+                <div class="settings-status" id="api-status">
+                  <!-- API status will be populated here -->
+                </div>
+              </div>
+              
+              <div class="settings-card">
+                <h3>Change Password</h3>
+                <form id="password-form">
+                  <div class="form-group">
+                    <label for="current-password">Current Password</label>
+                    <input type="password" id="current-password" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="new-password">New Password</label>
+                    <input type="password" id="new-password" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="confirm-password">Confirm New Password</label>
+                    <input type="password" id="confirm-password" required>
+                  </div>
+                  <button type="submit" class="btn-primary">Update Password</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- FAQ Modal -->
+    <div id="faq-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="modal-title">Add New FAQ</h2>
+          <button class="modal-close" id="modal-close">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </svg>
+          </button>
+        </div>
+        <form id="faq-form">
+          <div class="form-group">
+            <label for="faq-category">Category</label>
+            <select id="faq-category" required>
+              <option value="">Select Category</option>
+              <option value="pricing">Pricing</option>
+              <option value="support">Support</option>
+              <option value="products">Products</option>
+              <option value="general">General</option>
+              <option value="contact">Contact</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="faq-question">Question</label>
+            <input type="text" id="faq-question" required placeholder="Enter the question">
+          </div>
+          <div class="form-group">
+            <label for="faq-answer">Answer</label>
+            <textarea id="faq-answer" required placeholder="Enter the answer" rows="6"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="faq-keywords">Keywords (comma-separated)</label>
+            <input type="text" id="faq-keywords" placeholder="keyword1, keyword2, keyword3">
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn-secondary" id="cancel-btn">Cancel</button>
+            <button type="submit" class="btn-primary">Save FAQ</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Broadcast Modal -->
+    <div id="broadcast-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Create Broadcast Message</h2>
+          <button class="modal-close" id="broadcast-modal-close">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </svg>
+          </button>
+        </div>
+        <form id="broadcast-form">
+          <div class="form-group">
+            <label for="broadcast-title">Title</label>
+            <input type="text" id="broadcast-title" required placeholder="Enter broadcast title">
+          </div>
+          <div class="form-group">
+            <label for="broadcast-message">Message</label>
+            <textarea id="broadcast-message" required placeholder="Enter your message" rows="6"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="broadcast-recipients">Recipients (phone numbers, one per line)</label>
+            <textarea id="broadcast-recipients" placeholder="+1234567890&#10;+0987654321" rows="4"></textarea>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn-secondary" id="broadcast-cancel-btn">Cancel</button>
+            <button type="submit" class="btn-primary">Send Broadcast</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script type="module" src="/admin.js"></script>
+  </body>
+</html>
