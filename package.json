@@ -19,6 +19,7 @@
     "health-monitor": "node scripts/health-check.js monitor",
     "deploy": "node scripts/deploy-helper.js",
     "generate-env": "node scripts/generate-env.js",
+    "update": "node scripts/update-helper.js",
     "backup-db": "cp bot_data.db \"backups/bot_data_$(date +%Y%m%d_%H%M%S).db\"",
     "restore-db": "cp backups/bot_data_*.db bot_data.db",
     "clean-logs": "rm -rf logs/*.log",
